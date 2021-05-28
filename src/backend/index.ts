@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import { UserCotroller } from "./controller";
+import { userRouter } from "./controller/UserController";
 import { customLogger } from "./middleware/customLogger";
 import { allowCrossDomain } from "./middleware/allowCors";
 import path from "path";
@@ -11,8 +11,7 @@ app.use(allowCrossDomain);
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
-
-app.get("/user", customLogger, UserCotroller, customLogger);
+app.use('/user', userRouter); 
 // app.post("/crawl", customLogger, nanikaController, customLogger);
 // basic
 // app.get("/download", downloadFileController);

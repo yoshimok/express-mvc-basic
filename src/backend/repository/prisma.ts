@@ -3,7 +3,7 @@ import { PrismaClient, User } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // https://www.prisma.io/docs/concepts/components/prisma-client/crud
-export const getUser = async () => {
+export const findUsers = async () => {
   const users = await prisma.user.findMany()
   return users;
 };
