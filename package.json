@@ -1,0 +1,37 @@
+{
+  "name": "seo-crawler-puppeter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node ./src/backend/index.ts",
+    "init:db": "rm ./prisma/crawler-app.db && sqlite3 ./prisma/crawler-app.db < ./src/sql/init.sql",
+    "init:prisma-cli": "prisma introspect --force && prisma generate ",
+    "clean-output": "find ./csv/output -name '*.csv' | xargs rm",
+    "build:front": "rm -rf ./src/statics && parcel build ./src/frontend/index.html -d ./src/statics"
+  },
+  "author": "yoshimok",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^2.23.0",
+    "axios": "^0.21.1",
+    "dateformat": "^4.4.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "json2csv": "^5.0.5",
+    "log4js": "^6.3.0",
+    "ts-node": "^9.1.1"
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.14.0",
+    "@types/dateformat": "^3.0.1",
+    "@types/express": "^4.17.9",
+    "@types/json2csv": "^5.0.1",
+    "@types/puppeteer": "^5.4.2",
+    "@types/request": "^2.48.5",
+    "parcel-bundler": "^1.12.4"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ]
+}
